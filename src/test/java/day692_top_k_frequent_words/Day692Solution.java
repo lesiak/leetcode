@@ -48,7 +48,7 @@ public class Day692Solution {
 
         HashMap<String, Integer> wordToCount = new HashMap<>();
         for (int i = 0; i < words.length; i++)
-            wordToCount.put(words[i], wordToCount.getOrDefault(words[i], 0L) + 1);
+            wordToCount.put(words[i], wordToCount.getOrDefault(words[i], 0) + 1);
         var priorityQueue = new PriorityQueue<Map.Entry<String, Integer>>(
                 comparingFrequencyAndThenLexicalInt()
         );
