@@ -1,14 +1,31 @@
 package day3_length_of_longest_substring;
 
-import java.util.HashMap;
+import org.junit.jupiter.api.Test;
+
 import java.util.LinkedHashSet;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class Day3Solution {
-    public static void main(String[] args) {
-        System.out.println(lengthOfLongestSubstring("abcabcbb"));
-        System.out.println(lengthOfLongestSubstring("bbbbb"));
-        System.out.println(lengthOfLongestSubstring("pwwkew"));
-        System.out.println(lengthOfLongestSubstring("au"));
+
+    @Test
+    void repeatedLongestStringOfLen3() {
+        assertThat(lengthOfLongestSubstring("abcabcbb")).isEqualTo(3);
+    }
+
+    @Test
+    void repeatedLongestStringOfLen1() {
+        assertThat(lengthOfLongestSubstring("bbbbb")).isEqualTo(1);
+    }
+
+    @Test
+    void singleLongestStringOfLen3() {
+        assertThat(lengthOfLongestSubstring("pwwkew")).isEqualTo(3);
+    }
+
+    @Test
+    void singleLongestStringOfLen2() {
+        assertThat(lengthOfLongestSubstring("au")).isEqualTo(2);
     }
 
     public static int lengthOfLongestSubstring(String s) {
