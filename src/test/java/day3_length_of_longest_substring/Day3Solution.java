@@ -2,7 +2,7 @@ package day3_length_of_longest_substring;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.LinkedHashSet;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -11,6 +11,11 @@ public class Day3Solution {
     @Test
     void repeatedLongestStringOfLen3() {
         assertThat(lengthOfLongestSubstring("abcabcbb")).isEqualTo(3);
+    }
+
+    @Test
+    void longestStringWithPart() {
+        assertThat(lengthOfLongestSubstring("abcbefg")).isEqualTo(5);
     }
 
     @Test
@@ -42,6 +47,8 @@ public class Day3Solution {
                     currentMax = currentSet.size();
                 }
             } else {
+                // cleanup the beginning of the sliding window
+                // after the cleanup, the currentSet ends with lastChar
                 var it = currentSet.iterator();
                 while (it.next() != lastChar) {
                     it.remove();
@@ -52,5 +59,6 @@ public class Day3Solution {
         }
         return currentMax;
     }
+
 
 }
