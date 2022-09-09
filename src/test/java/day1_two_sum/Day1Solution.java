@@ -1,16 +1,19 @@
 package day1_two_sum;
 
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 import java.util.*;
 
-class Day1Solution {
+import static org.assertj.core.api.Assertions.assertThat;
 
-    public static void main(String[] args) {
-        //int[] input = {2,7,11,15};
-        //int target = 9;
+class Day1Solution {
+    @Test
+    public void test1() {
         int[] input = {3, 2, 4};
         int target = 6;
         int[] result = twoSumOnePass(input, target);
-        System.out.println(Arrays.toString(result));
+        assertThat(result).containsExactly(1, 2);
     }
 
     static public int[] twoSumTwoPass(int[] nums, int target) {
