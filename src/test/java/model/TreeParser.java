@@ -25,11 +25,13 @@ public class TreeParser {
             Integer valRight = input.get(index++);
             if (valLeft != null) {
                 var left = new TreeNode(valLeft);
+                left.parent = currentNode;
                 currentNode.left = left;
                 nodesToProcess.add(left);
             }
             if (valRight != null) {
                 var right = new TreeNode(valRight);
+                right.parent = currentNode;
                 currentNode.right = right;
                 nodesToProcess.add(right);
             }
