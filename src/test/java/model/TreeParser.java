@@ -4,7 +4,9 @@ import com.sun.source.tree.Tree;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class TreeParser {
 
@@ -12,21 +14,27 @@ public class TreeParser {
         return parseInput(Arrays.asList(a));
     }
     public static TreeNode parseInput(List<Integer> input) {
-        return parseInput(input, 0);
-    }
-
-    public static TreeNode parseInput(List<Integer> input, int index) {
-
-        if (index >= input.size()) {
-            return null;
+        //return parseInput(input, 0);
+        var root = new TreeNode(input.get(0));
+        var index = 1;
+        Queue<TreeNode> nodesToProcess = new LinkedList<>();
+        nodesToProcess.add(root);
+        while(index < input.size()) {
+            var currentNode = nodesToProcess.poll();
+            Integer valLeft = input.get(index++);
+            Integer valRight = input.get(index++);
+            if (valLeft != null) {
+                var left = new TreeNode(valLeft);
+                currentNode.left = left;
+                nodesToProcess.add(left);
+            }
+            if (valRight != null) {
+                var right = new TreeNode(valRight);
+                currentNode.right = right;
+                nodesToProcess.add(right);
+            }
         }
-        Integer val = input.get(index);
-        if (val == null) {
-            return null;
-        } else {
-            TreeNode left = parseInput(input, 2 * index + 1);
-            TreeNode right = parseInput(input, 2 * index + 2);
-            return new TreeNode(val, left, right);
-        }
+        return root;
+
     }
 }
