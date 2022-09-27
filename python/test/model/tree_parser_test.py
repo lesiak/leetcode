@@ -15,3 +15,13 @@ def test_parse_input():
     assert root.right.right.val == 7
     assert root.right.right.left is None
     assert root.right.right.right is None
+
+
+def test_parse_input_missing_rightmost():
+    data = [1, None, 2, 3]
+    root = parse_tree(data)
+    assert root.val == 1
+    assert root.left is None
+    assert root.right.val == 2
+    assert root.right.left.val == 3
+    assert root.right.right is None
